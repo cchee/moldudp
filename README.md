@@ -1,4 +1,4 @@
-# moldudp-codec
+# moldudp_codec
 
 ## Purpose
 
@@ -10,7 +10,7 @@ pip3 install moldudp_codec
 
 ## Usage
 
-Check samples/mold_codec_test.py for details.
+Check samples/codec_test.py for details.
 
 ## Requirements
 

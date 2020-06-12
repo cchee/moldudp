@@ -3,8 +3,7 @@
 #
 # Sample application on how to use MoldUDP codec
 #
-from moldudp_codec import *
-
+from ../codec import *
 
 
 class MoldSubscriber(MsgSubscriber):
@@ -43,7 +42,7 @@ class MoldPublisher(MsgPublisher):
         # In real world, publish() is call and then sends the msg
         # to file or network. Then ths subscriber read the msg
         # from file or network, and pass the encoded bytearray/packet
-        # to decoder to process. 
+        # to decoder to process.
         self._moldsub.get_decoder().buffer(msg)
         self._moldsub.get_decoder().decode()
 

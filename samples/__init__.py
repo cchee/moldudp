@@ -1,2 +1,2 @@
 # samples
-__all__ = ['mold_codec_test']
+__all__ = ['codec_example']
