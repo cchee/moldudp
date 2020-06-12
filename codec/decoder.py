@@ -1,23 +1,24 @@
 # Copyright 2020 All right reserved
 # Author: Chester Chee <chester.chee@gmail.com>
 #
-# Mold UDP packet decoder according to the specification from Nasdaq
+# MoldUDP bytearray/packet decoder according to the specification from Nasdaq
+# http://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/moldudp64.pdf
 #
 from struct import unpack_from
 from struct import calcsize
 
-from mold_const import END_OF_SESSION
-from mold_const import HEART_BEAT
-from mold_const import PAYLOAD_OFFSET
-from mold_const import SESSION_OFFSET
-from mold_const import MESSAGE_SIZE_FIELD_LEN
+from const import END_OF_SESSION
+from const import HEART_BEAT
+from const import PAYLOAD_OFFSET
+from const import SESSION_OFFSET
+from const import MESSAGE_SIZE_FIELD_LEN
+from msgsub import MsgSubscriber
 
 
-# MoldUDP (http://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/moldudp64.pdf)
 class MoldUDPDecoder:
 
     # subscriber is the application message processor
-    def __init__(self, subscriber, debug=False):
+    def __init__(self, subscriber : MsgSubscriber, debug=False):
         self._offset = SESSION_OFFSET
         self._subscriber = subscriber
         self._debug = debug

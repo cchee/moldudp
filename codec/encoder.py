@@ -1,23 +1,24 @@
 # Copyright 2020 All right reserved
 # Author: Chester Chee <chester.chee@gmail.com>
 #
-# Mold UDP packet encoder according to the specification from Nasdaq
+# MoldUDP bytearray/packet encoder according to the specification from Nasdaq
+# http://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/moldudp64.pdf
 #
 from struct import pack_into
 
-from mold_const import HEADER_SIZE
-from mold_const import MESSAGE_SIZE_FIELD_LEN
-from mold_const import MOLDPKT_SIZE
-from mold_const import PAYLOAD_OFFSET
-from mold_const import PAYLOAD_SIZE
-from mold_const import SESSION_OFFSET
+from const import HEADER_SIZE
+from const import MESSAGE_SIZE_FIELD_LEN
+from const import MOLDPKT_SIZE
+from const import PAYLOAD_OFFSET
+from const import PAYLOAD_SIZE
+from const import SESSION_OFFSET
+from msgpub import MsgPublisher
 
 
-# MoldUDP (http://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/moldudp64.pdf)
 class MoldUDPEncoder:
 
     # publisher is the message sender to the wire
-    def __init__(self, publisher, debug=False):
+    def __init__(self, publisher : MsgPublisher, debug=False):
         self._offset = SESSION_OFFSET
         self._publisher = publisher
         self._debug = debug
@@ -50,31 +51,29 @@ class MoldUDPEncoder:
             msg = self._msgblks.pop(0)
             sz = len(msg)
             if ((self._offset + MESSAGE_SIZE_FIELD_LEN + sz) < remaining):
-                #print("PRE MSG SIZE OFFSET: {}".format(self._offset))
                 pack_into('>H', self._buffer, self._offset, sz)
                 self._offset += MESSAGE_SIZE_FIELD_LEN
-                #print("POST MSG SIZE OFFSET: {}".format(self._offset))
                 fmt = ">{}s".format(sz)
                 pack_into(fmt, self._buffer, self._offset, msg)
                 self._offset += sz
-                #print("MSG DATA OFFSET: {}".format(self._offset))
                 self._msgcount += 1
                 published = False
             else:
                 # can't fit into the buffer going out so
                 # put the message block back to the front of queue
                 self._msgblks.insert(0, msg)
-                # payload is filled, now update header with latest count and send
+                # payload is filled, now send
                 self._send()
                 published = True
                 break
         # Flushing the last packet even it didn't fill up the buffer
         if ((published == False) and (self._offset < remaining)):
-            # now update header with latest count and send
+            # now send
             self._send()
             published = True
 
     def _send(self):
+        # update header with latest count
         pack_into('>10sQh', self._header, 0,
                   self._session, self._seq, self._msgcount)
         if (self._debug == True):

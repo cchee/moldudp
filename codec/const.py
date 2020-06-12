@@ -1,7 +1,6 @@
 # Copyright 2020 All right reserved
 # Author: Chester Chee <chester.chee@gmail.com>
 #
-# MoldUDP (http://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/moldudp64.pdf)
 # Field byte size constants
 SESSION_FIELD_LEN       = 10
 SEQ_NUM_FIELD_LEN       = 8

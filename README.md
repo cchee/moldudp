@@ -6,11 +6,11 @@ This library provides easy to use codec for processing network packet using <a h
 
 ## Installation
 
-pip3 install moldudp-codec
+pip3 install moldudp_codec
 
 ## Usage
 
-Check mold_codec_test.py for details.
+Check samples/mold_codec_test.py for details.
 
 ## Requirements
 
