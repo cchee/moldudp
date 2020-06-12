@@ -16,7 +16,7 @@ setup(
     url='https://github.com/cchee/moldudp_codec',
     author='Chester Chee',
     author_email='chester.chee@gmail.com',
-    packages=find_packages(include=['codec', 'samples']),
+    packages=find_packages(include=['moldudp_codec']),
     python_requires='>=3.0',
     project_urls={
         'Bug Reports': 'https://github.com/cchee/moldudp_codec/issues',

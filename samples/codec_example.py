@@ -3,7 +3,11 @@
 #
 # Sample application on how to use MoldUDP codec
 #
-from ../codec import *
+import codec.const
+import codec.decoder
+import codec.encoder
+import codec.msgpub
+import codec.msgsub
 
 
 class MoldSubscriber(MsgSubscriber):
@@ -53,9 +57,9 @@ moldsub = MoldSubscriber()
 moldpub = MoldPublisher(moldsub)
 moldpub.session(b"20200609AA")
 moldpub.seq(1)
-# Keep adding message block to the encoder, when buffer is filled
-# it sends the buffer when it is filled or the last message block
-# can not add into the buffer anymore
+# Keep adding message block to the encoder, it sends
+# the buffer when it is filled or the last message block
+# can not be added into the buffer anymore
 while (idx < cnt):
     moldpub.add_msg(b"ABCDEFGHIJKLMNOPQRSTUVWXYZ")
     idx += 1
