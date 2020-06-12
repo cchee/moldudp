@@ -3,11 +3,10 @@
 #
 # Sample application on how to use MoldUDP codec
 #
-import codec.const
-import codec.decoder
-import codec.encoder
-import codec.msgpub
-import codec.msgsub
+import moldudp_codec.decoder
+import moldudp_codec.encoder
+import moldudp_codec.msgpub
+import moldudp_codec.msgsub
 
 
 class MoldSubscriber(MsgSubscriber):
