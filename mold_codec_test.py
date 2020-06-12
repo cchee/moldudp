@@ -3,8 +3,6 @@
 #
 # Sample application on how to use MoldUDP codec
 #
-from struct import *
-
 from mold_decoder import MoldUDPDecoder
 from mold_encoder import MoldUDPEncoder
 from msg_pub import MsgPublisher
@@ -22,6 +20,7 @@ class MoldDecoderTest(MsgSubscriber):
     def on_msgblk(self, msg):
         print("RECEIVED MSG: {}".format(msg))
 
+
 class MoldEncoderTest(MsgPublisher):
 
     def __init__(self):
@@ -34,13 +33,13 @@ class MoldEncoderTest(MsgPublisher):
         self._molddeco.decode()
 
 
-idx=0
-cnt=1000
+idx = 0
+cnt = 1000
 moldpub = MoldEncoderTest()
 moldencoder = MoldUDPEncoder(moldpub, True)
 moldencoder.session(b"20200609AA")
 moldencoder.seq(1)
-while (idx < cnt): 
+while (idx < cnt):
     moldencoder.add_msg(b"ABCDEFGHIJKLMNOPQRSTUVWXYZ")
     idx += 1
     moldencoder.add_msg(b"CDEFGHIJKLMNOPQRSTUVWXYZAB")

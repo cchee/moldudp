@@ -3,9 +3,14 @@
 #
 # Mold UDP packet decoder according to the specification from Nasdaq
 #
-from struct import *
+from struct import unpack_from
+from struct import calcsize
 
-from mold_const import *
+from mold_const import END_OF_SESSION
+from mold_const import HEART_BEAT
+from mold_const import PAYLOAD_OFFSET
+from mold_const import SESSION_OFFSET
+from mold_const import MESSAGE_SIZE_FIELD_LEN
 
 
 # MoldUDP (http://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/moldudp64.pdf)

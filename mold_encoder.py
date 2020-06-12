@@ -3,9 +3,14 @@
 #
 # Mold UDP packet encoder according to the specification from Nasdaq
 #
-from struct import *
+from struct import pack_into
 
-from mold_const import *
+from mold_const import HEADER_SIZE
+from mold_const import MESSAGE_SIZE_FIELD_LEN
+from mold_const import MOLDPKT_SIZE
+from mold_const import PAYLOAD_OFFSET
+from mold_const import PAYLOAD_SIZE
+from mold_const import SESSION_OFFSET
 
 
 # MoldUDP (http://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/moldudp64.pdf)
@@ -70,7 +75,8 @@ class MoldUDPEncoder:
             published = True
 
     def _send(self):
-        pack_into('>10sQh', self._header, 0, self._session, self._seq, self._msgcount)
+        pack_into('>10sQh', self._header, 0,
+                  self._session, self._seq, self._msgcount)
         if (self._debug == True):
             print("SEND MSG COUNT:   {}".format(self._msgcount))
             print("SEND HDR: {}".format(self._header))
