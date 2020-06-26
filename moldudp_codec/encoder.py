@@ -71,6 +71,7 @@ class MoldUDPEncoder:
             # now send
             self._send()
             published = True
+        self._left = PAYLOAD_SIZE
 
     def _send(self):
         # update header with latest count
@@ -104,7 +105,6 @@ class MoldUDPEncoder:
         # force encode if buffer is filled
         if (self._left < (MESSAGE_SIZE_FIELD_LEN + 1)):
             self._encode()
-            self._left = PAYLOAD_SIZE
 
     def process(self):
         while (self.msgcount() > 0):
