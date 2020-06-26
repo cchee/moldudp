@@ -40,7 +40,8 @@ class MoldUDPDecoder:
             self._offset += MESSAGE_SIZE_FIELD_LEN
             fmt = '>{}s'.format(blk_sz)
             msg = unpack_from(fmt, self._buffer, self._offset)[0]
-            self._subscriber.on_msgblk(msg)
+            if (self._subscriber):
+                self._subscriber.on_msgblk(msg)
             self._offset += calcsize(fmt)
             i -= 1
 
