@@ -13,4 +13,4 @@ Check samples/codec_test.py for details.
 - Python >= 3.0
 
 ## Disclaimer
-I am a newbie to Python but learning. I am still in the process of converting this project into library/module via setup.py.
+I am a newbie to Python but learning. Code works when all python script files are residing in the same directory. I am still in the process of converting this project into library/module via setup.py.
