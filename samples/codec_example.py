@@ -3,7 +3,7 @@
 #
 # Sample application on how to use MoldUDP codec
 #
-from ..codec import MoldUDPDecoder, MoldUDPEncoder, MsgPublisher, MsgSubscriber
+from moldudp.codec import *
 
 
 class MoldSubscriber(MsgSubscriber):
