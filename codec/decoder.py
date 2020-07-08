@@ -18,11 +18,11 @@ from msgsub import MsgSubscriber
 class MoldUDPDecoder:
 
     # subscriber is the application message processor
-    def __init__(self, subscriber : MsgSubscriber, debug=False):
+    def __init__(self, subscriber: MsgSubscriber, debug=False):
         self._offset = SESSION_OFFSET
         self._subscriber = subscriber
         self._debug = debug
-        
+
     def _process_msghdr(self, session, seq, msgcount):
         self._session = session
         self._seq = seq
@@ -49,7 +49,7 @@ class MoldUDPDecoder:
         (session, seq, msgcount) = unpack_from('>10sQh', self._buffer)
         self._process_msghdr(session, seq, msgcount)
         self._offset = PAYLOAD_OFFSET
-        
+
     def decode(self):
         if (self._subscriber == None):
             return

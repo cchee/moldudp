@@ -18,7 +18,7 @@ from msgpub import MsgPublisher
 class MoldUDPEncoder:
 
     # publisher is the message sender to the wire
-    def __init__(self, publisher : MsgPublisher, debug=False):
+    def __init__(self, publisher: MsgPublisher, debug=False):
         self._offset = SESSION_OFFSET
         self._publisher = publisher
         self._debug = debug
