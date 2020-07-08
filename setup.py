@@ -8,19 +8,19 @@ with open(path.join(here, "README.md"), "r") as fh:
 
 
 setup(
-    name='moldudp_codec',
-    version='0.0.12',
+    name='moldudp',
+    version='0.0.13',
     description='A simple library to decode/encode MoldUDP64 bytearray/packet',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url='https://github.com/cchee/moldudp_codec',
+    url='https://github.com/cchee/moldudp',
     author='Chester Chee',
     author_email='chester.chee@gmail.com',
     packages=find_packages(),
     python_requires='>=3.0',
     project_urls={
-        'Bug Reports': 'https://github.com/cchee/moldudp_codec/issues',
-        'Source': 'https://github.com/cchee/moldudp_codec/',
+        'Bug Reports': 'https://github.com/cchee/moldudp/issues',
+        'Source': 'https://github.com/cchee/moldudp/',
     },
     classifiers=[
         "Intended Audience :: Developers",
