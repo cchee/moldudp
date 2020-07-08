@@ -7,12 +7,12 @@
 from struct import unpack_from
 from struct import calcsize
 
-from const import END_OF_SESSION
-from const import HEART_BEAT
-from const import PAYLOAD_OFFSET
-from const import SESSION_OFFSET
-from const import MESSAGE_SIZE_FIELD_LEN
-from msgsub import MsgSubscriber
+from moldudp.codec.const import END_OF_SESSION
+from moldudp.codec.const import HEART_BEAT
+from moldudp.codec.const import PAYLOAD_OFFSET
+from moldudp.codec.const import SESSION_OFFSET
+from moldudp.codec.const import MESSAGE_SIZE_FIELD_LEN
+from moldudp.codec.msgsub import MsgSubscriber
 
 
 class MoldUDPDecoder:
