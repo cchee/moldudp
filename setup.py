@@ -9,7 +9,7 @@ with open(path.join(here, "README.md"), "r") as fh:
 
 setup(
     name='moldudp',
-    version='0.0.20',
+    version='0.0.21',
     description='A simple library to decode/encode MoldUDP64 bytearray/packet',
     long_description=long_description,
     long_description_content_type="text/markdown",
