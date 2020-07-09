@@ -2,6 +2,7 @@
 # Author: Chester Chee <chester.chee@gmail.com>
 #
 # Sample application on how to use MoldUDP codec
+# To run: python3 codec_example.py
 #
 from moldudp.codec.msgsub import *
 from moldudp.codec.msgpub import *
