@@ -49,10 +49,9 @@ class MoldPublisher(MsgPublisher):
 
     def publish(self, msg):
         print("SENT PKT: {}".format(msg))
-        # In real world, publish() is call which writes the msg
-        # to file or network. Then the subscriber reads the msg
-        # from file or network, and passes the encoded bytearray/packet
-        # to decoder to process.
+        # In real world, publish() writes the msg to a file or network.
+        # Then the subscriber reads the msg from a file or network, and
+        # passes the encoded bytearray/packet to decoder to process.
         self.__moldsub.get_decoder().buffer(msg)
         self.__moldsub.get_decoder().decode()
 
@@ -63,9 +62,9 @@ moldsub = MoldSubscriber()
 moldpub = MoldPublisher(moldsub)
 moldpub.session(b"20200609AA")
 moldpub.seq(1)
-# Keep adding message block to the encoder, it sends
-# the buffer when it is filled or the last message block
-# can not be added into the buffer anymore
+# Keep adding message block to the encoder, it sends the buffer when
+# it is filled or when the last message block can not fit into the
+# buffer anymore
 while (idx < cnt):
     moldpub.add_msg(b"ABCDEFGHIJKLMNOPQRSTUVWXYZ")
     idx += 1
