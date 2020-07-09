@@ -1,7 +1,7 @@
 # moldudp.codec
 
 ## Purpose
-This library provides easy to use codec for processing network packet using <a href="http://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/moldudp64.pdf">MoldUDP64</a> protocol from NASDAQ.
+This library provides easy to use codec for processing byte buffer using <a href="http://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/moldudp64.pdf">MoldUDP64</a> message protocol from NASDAQ.
 
 ## Installation
 pip3 install moldudp
