@@ -40,6 +40,12 @@ class MoldPublisher(MsgPublisher):
     def seq(self, seq):
         self.__moldencoder.seq(seq)
 
+    def add_msg(self, msg):
+        self.__moldencoder.add_msg(msg)
+
+    def process(self):
+        self.__moldencoder.process()
+
     def publish(self, msg):
         print("SENT PKT: {}".format(msg))
         # In real world, publish() is call which writes the msg
