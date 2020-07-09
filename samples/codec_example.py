@@ -13,10 +13,10 @@ class MoldSubscriber(MsgSubscriber):
 
     def __init__(self):
         # Setup a decoder to process encoded bytearray/packet
-        self._molddecoder = MoldUDPDecoder(self, True)
+        self.__molddecoder = MoldUDPDecoder(self, True)
 
     def get_decoder(self):
-        return self._molddecoder
+        return self.__molddecoder
 
     def on_hb(self):
         print("Got heart beat")
@@ -31,14 +31,14 @@ class MoldSubscriber(MsgSubscriber):
 class MoldPublisher(MsgPublisher):
 
     def __init__(self, moldsub):
-        self._moldencoder = MoldUDPEncoder(self, True)
-        self._moldsub = moldsub
+        self.__moldencoder = MoldUDPEncoder(self, True)
+        self.__moldsub = moldsub
 
     def session(self, sid):
-        self._moldencoder.session(sid)
+        self.__moldencoder.session(sid)
 
     def seq(self, seq):
-        self._moldencoder.seq(seq)
+        self.__moldencoder.seq(seq)
 
     def publish(self, msg):
         print("SENT PKT: {}".format(msg))
@@ -46,8 +46,8 @@ class MoldPublisher(MsgPublisher):
         # to file or network. Then the subscriber reads the msg
         # from file or network, and passes the encoded bytearray/packet
         # to decoder to process.
-        self._moldsub.get_decoder().buffer(msg)
-        self._moldsub.get_decoder().decode()
+        self.__moldsub.get_decoder().buffer(msg)
+        self.__moldsub.get_decoder().decode()
 
 
 idx = 0
