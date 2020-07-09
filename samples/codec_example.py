@@ -4,8 +4,8 @@
 # Sample application on how to use MoldUDP codec
 # To run: python3 codec_example.py
 #
-from moldudp.codec.msgsub import *
-from moldudp.codec.msgpub import *
+from moldudp.msg.msgsub import *
+from moldudp.msg.msgpub import *
 from moldudp.codec.decoder import *
 from moldudp.codec.encoder import *
 
