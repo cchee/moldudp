@@ -7,7 +7,7 @@ This library provides easy to use codec for processing byte buffer using <a href
 pip3 install moldudp
 
 ## Usage
-Check samples/codec_test.py for details.
+Check samples/codec_example.py for details.
 
 ## Requirements
 - Python >= 3.0
