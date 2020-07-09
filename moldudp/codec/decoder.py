@@ -36,18 +36,18 @@ class MoldUDPDecoder:
         i = self.__msgcount
         while (i > 0):
             # message block consists of 2-bytes message length and follows by message data with previously specified length
-            blk_sz = unpack_from('>H', self._buffer, self.__offset)[0]
+            blk_sz = unpack_from('>H', self.__buffer, self.__offset)[0]
             self.__offset += MESSAGE_SIZE_FIELD_LEN
             fmt = '>{}s'.format(blk_sz)
-            msg = unpack_from(fmt, self._buffer, self.__offset)[0]
+            msg = unpack_from(fmt, self.__buffer, self.__offset)[0]
             if (self.__subscriber):
                 self.__subscriber.on_msgblk(msg)
             self.__offset += calcsize(fmt)
             i -= 1
 
     def buffer(self, buffer):
-        self._buffer = bytearray(buffer)
-        (session, seq, msgcount) = unpack_from('>10sQh', self._buffer)
+        self.__buffer = bytearray(buffer)
+        (session, seq, msgcount) = unpack_from('>10sQh', self.__buffer)
         self.__process_msghdr(session, seq, msgcount)
         self.__offset = PAYLOAD_OFFSET
 
