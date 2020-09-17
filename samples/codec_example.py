@@ -49,7 +49,7 @@ class MoldPublisher(MsgPublisher):
 
     def publish(self, msg):
         print("SENT PKT: {}".format(msg))
-        # In real world, publish() writes the msg to a file or network.
+        # In real world, publish() writes the msg to a file or network (UDP/IP).
         # Then the subscriber reads the msg from a file or network, and
         # passes the encoded bytearray/packet to decoder to process.
         self.__moldsub.get_decoder().buffer(msg)
